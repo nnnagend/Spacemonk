@@ -10,6 +10,16 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap-datepicker-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+gem 'client_side_validations'
+gem 'geokit-rails'
 
 group :development, :test do
   gem 'byebug'

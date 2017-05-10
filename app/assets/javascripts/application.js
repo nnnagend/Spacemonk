@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-datepicker/core
+//= require_tree ./devise
+//= require rails.validations
 //= require_tree .

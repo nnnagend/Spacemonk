@@ -1,0 +1,77 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, :required => true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar do %>
+      <%= f.file_field :avatar, accept: 'image/jpeg,image/png' %>
+      <%= f.hidden_field :avatar_cache %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth %>
+    <%= f.text_field :birth_date, :required => true, class: 'datepicker', placeholder: 'YYYY-MM-DD' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %> <br />
+    <%= f.radio_button :is_female, true %><label for="is_female_true">Female</label>
+    <%= f.radio_button :is_female, false %><label for="is_female_false">Male</label>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :personal_website %><br />
+    <%= f.text_field :personal_website, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

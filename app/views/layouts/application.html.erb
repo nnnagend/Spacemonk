@@ -4,11 +4,43 @@
   <title>Spacemonk</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "rails.validations" %>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= flash_messages %>
+<% if !user_signed_in? %>
+  <a class="navbar-brand" href="/users/sign_in">Spacemonk</a>
+<% end %>
+<% if user_signed_in? %>
+	<nav class ="navbar navbar-fixed-bottom navbar-inverse">
+		<div class="container">
+	        <div class="navbar-header">
+    				<div class="navbar-brand" style="color: black">
+              <%= link_to root_path do %>
+                <% if current_user.fb_image?%>
+                  <img src= <%=current_user.fb_image%> width=40 height=40 ></img>
+                <% elsif current_user.avatar.url.present?%>
+                  <img src= <%=current_user.avatar_url(:profile_thumb)%>></img>
+                <% end %>
+              <% end %>
 
+              <%=current_user.first_name%>
+              - <%= link_to "Logout", destroy_user_session_path, :method => 'delete' %>
+      				- <%= link_to "Edit Profile", edit_user_registration_path %>
+    					<!-- <p>
+                <%=current_user.city%>
+                <%=current_user.state%>
+                <%=current_user.country%>
+              </p> -->
+    				</div>
+          </div>
+		</div>
+	</nav>
+<% end %>
 <%= yield %>
-
 </body>
 </html>
